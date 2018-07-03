@@ -1,0 +1,17 @@
+import { combineReducers } from 'redux';
+import {
+  i18nChange
+} from '../actions/actions'
+
+function i18nChange(state = 'zh-cn', action) {
+  switch(action.type) {
+    case 'I18N_CHANGE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+export function combineReducers({
+  i18n: i18nChange
+})
