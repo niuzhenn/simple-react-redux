@@ -10,3 +10,8 @@ react-redux, react-router
   存放react组件
 4. config
   存放配置文件
+
+
+### Redux
+
+q yige
