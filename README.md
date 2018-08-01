@@ -64,7 +64,7 @@ function sum(a, b) {
 
 # Redux的三个角色
 
-#### action
+### action
 
 action是把数据从数据源传到store的有效载荷。作为store的唯一数据来源，通过store.dispatch()将action传到store。
 action是这样的：
@@ -81,7 +81,7 @@ function actionDemo(state) {
 action的本质是返回一个JavaScript对象，这个对象有两个属性：type和payload。
 type属性表示将要执行的动作，在reducers中使用该属性进行匹配；payload属性是需要传给store的数据。
 
-#### reducers
+### reducers
 
 reducer在这里做了两件事情：
 
@@ -119,4 +119,30 @@ return Object.assign({}, action.payload.state, {...state})
 
 2. 我们前面说过，Redux使用状态树对整个应用进行管理，而这个状态树的设计也是在reducer中所做的事情。
 
+#### combineReducer函数
+===
+
+所有的应用都不会只包含一个状态，整个应用是由很多个状态组成的，例如有的state包含模态框的显示状态，有的state包含表格的内容，而有的state包含导航栏的内容，那我们的数据流难道要一个一个的传给应用吗？
+我们介绍一下combineReducer函数，这个函数可以让我们把一个一个的state组成状态树，并且把这个状态树传给我们的应用。
+我们在rootReducers文件夹下创建一个rootReducers.js函数
+```
+import {  } from '../actions/actions';
+
+function actionChange(state = initState, action) {
+  switch (action.type) {
+    case 'ACTION_DEMO':
+      return action.payload.state;
+    default:
+      return state;
+  }
+}
+
+export const rootReducers = combineReducers({
+  state1: actionChange,
+  state2: actionChange2
+})
+```
+我们可以看到，在rootReducers.js内，我们定义了许多个reducer，每个reducer都会返回一个state，在文件底部我们用combineReducers函数将这些状态组成了一个对象，并且赋给一个常量，将这个常量暴露出去，这个暴露出去的常量就是我们的状态树。
+
+### store
 
