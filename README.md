@@ -1,5 +1,5 @@
 # simple-react-redux
-react-redux, react-router
+react-redux简易示例
 
 # 目录结构
 1. actions
