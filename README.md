@@ -145,4 +145,12 @@ export const rootReducers = combineReducers({
 我们可以看到，在rootReducers.js内，我们定义了许多个reducer，每个reducer都会返回一个state，在文件底部我们用combineReducers函数将这些状态组成了一个对象，并且赋给一个常量，将这个常量暴露出去，这个暴露出去的常量就是我们的状态树。
 
 ### store
+store作为Redux中state的承载体，它保存了状态树，并且可在store中加载各种中间件，实现各种附加功能。
+store的功能：
+ 1. 存储应用的状态树；
+ 2. 通过getState()方法获取state；
+ 3. 通过dispatch(action)来更新state；
+ 4. 通过subscribe(listener)来注册监听器；
+ 5. 取消subscribe(listener)返回的监听器；
 
+store通过createStore(rootReducers)来创建
